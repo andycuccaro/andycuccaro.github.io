@@ -25,6 +25,15 @@ h1 {
   margin: 0 0 0.25rem;
 }
 
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 a:visited {
+  color: inherit;
+}
+
 .role {
   font-size: 1.1rem;
   color: #444;

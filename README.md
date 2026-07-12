@@ -2,4 +2,4 @@
 
 Sitio web para mi portfolio de arte 3D
 
-**URL**: https://andycuccaro.github.io/andycuccaro
+**URL**: https://andycuccaro.github.io/

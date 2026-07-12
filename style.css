@@ -121,6 +121,13 @@ nav a:hover {
   opacity: 0.85;
 }
 
+video {
+  width: 100%;
+  border-radius: 0.3rem;
+  display: block;
+  margin-top: 1rem;
+}
+
 .project-images {
   display: flex;
   flex-direction: column;

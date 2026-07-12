@@ -134,6 +134,10 @@ nav a:hover {
   display: block;
 }
 
+.project-images a {
+  display: block;
+}
+
 .img-placeholder {
   aspect-ratio: 16 / 10;
   background: #e2e2e2;

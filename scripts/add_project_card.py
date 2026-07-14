@@ -18,7 +18,7 @@ def main():
 
     card = (
         f'    <a class="project-card" href="/projects/{slug}/">\n'
-        f'      <img src="/images/{slug}/thumb.jpg" alt="{title} thumbnail" loading="lazy">\n'
+        f'      <img src="/projects/{slug}/media/img/thumb.webp" alt="{title} thumbnail" loading="lazy">\n'
         f'      <span>{title}</span>\n'
         f'    </a>'
     )

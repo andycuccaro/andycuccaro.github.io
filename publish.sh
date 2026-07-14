@@ -1,5 +1,5 @@
 #!/bin/bash
-# Uso: ./publish.sh content/projects/mi-proyecto.md
+# Uso: ./publish.sh projects/mi-proyecto/mi-proyecto.md
 set -e
 
 SRC="$1"
@@ -10,19 +10,17 @@ fi
 
 TYPE=$(awk '/^type:/{print $2; exit}' "$SRC")
 TITLE=$(awk -F': ' '/^title:/{ $1=""; sub(/^ /,""); print; exit }' "$SRC")
-SLUG=$(basename "$SRC" .md)
+DIR=$(dirname "$SRC")
+SLUG=$(basename "$DIR")
 
 case "$TYPE" in
   project)
-    OUTDIR="projects/$SLUG"
     TEMPLATE="templates/project.html"
     ;;
   article)
-    OUTDIR="articles/$SLUG"
     TEMPLATE="templates/article.html"
     ;;
   page)
-    OUTDIR="$SLUG"
     TEMPLATE="templates/page.html"
     ;;
   *)
@@ -31,10 +29,9 @@ case "$TYPE" in
     ;;
 esac
 
-mkdir -p "$OUTDIR"
-pandoc "$SRC" -s --template="$TEMPLATE" -o "$OUTDIR/index.html"
+pandoc "$SRC" -s --template="$TEMPLATE" -o "$DIR/index.html"
 
-echo "✔ Publicado en $OUTDIR/index.html"
+echo "✔ Publicado en $DIR/index.html"
 if [ "$TYPE" = "project" ]; then
   python3 scripts/add_project_card.py "$SLUG" "$TITLE" "index.html"
 elif [ "$TYPE" = "article" ]; then

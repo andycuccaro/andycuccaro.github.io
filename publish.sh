@@ -9,6 +9,7 @@ if [ -z "$SRC" ] || [ ! -f "$SRC" ]; then
 fi
 
 TYPE=$(awk '/^type:/{print $2; exit}' "$SRC")
+TITLE=$(awk -F': ' '/^title:/{ $1=""; sub(/^ /,""); print; exit }' "$SRC")
 SLUG=$(basename "$SRC" .md)
 
 case "$TYPE" in
@@ -35,7 +36,7 @@ pandoc "$SRC" -s --template="$TEMPLATE" -o "$OUTDIR/index.html"
 
 echo "✔ Publicado en $OUTDIR/index.html"
 if [ "$TYPE" = "project" ]; then
-  echo "  Recordá agregar/actualizar la miniatura en index.html (home)."
+  python3 scripts/add_project_card.py "$SLUG" "$TITLE" "index.html"
 elif [ "$TYPE" = "article" ]; then
   echo "  Recordá agregar la línea correspondiente en articles/index.html."
 fi

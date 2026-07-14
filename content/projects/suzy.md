@@ -3,8 +3,11 @@ title: Suzy (with a Z)
 type: project
 ---
 
-Meet Suzy, the protagonist of my short film "Suzy (with a Z)". A routine day for college student Suzy unravels after strange glitches around her room reveal she's an animated character, exposing the hidden truth behind her world and forcing her to question her own existence.
-Full name: Suzanne Cubette Van der Blend. Can you spot every Easter Egg?
+She's Suzy, the protagonist of my short film "Suzy (with a Z)". A routine day for college student Suzy unravels after strange glitches around her room reveal she's an animated character, exposing the hidden truth behind her world and forcing her to question her own existence.
+
+Full name: Suzanne Cubette Van der Blend. 
+
+Can you spot every Easter Egg?
 
 ```{=html}
 <div class="project-images">

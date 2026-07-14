@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suzy (with a Z) — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<main>
+---
+title: Suzy (with a Z)
+type: project
+---
 
-<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/articles/">Articles</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>
+Meet Suzy, the protagonist of my short film "Suzy (with a Z)". A routine day for college student Suzy unravels after strange glitches around her room reveal she's an animated character, exposing the hidden truth behind her world and forcing her to question her own existence.
+Full name: Suzanne Cubette Van der Blend. Can you spot every Easter Egg?
 
-<section>
-  <h2>Suzy (with a Z)</h2>
-
-<p>Meet Suzy, the protagonist of my short film “Suzy (with a Z)”. A
-routine day for college student Suzy unravels after strange glitches
-around her room reveal she’s an animated character, exposing the hidden
-truth behind her world and forcing her to question her own existence.
-Full name: Suzanne Cubette Van der Blend. Can you spot every Easter
-Egg?</p>
+```{=html}
 <div class="project-images">
   <a href="/images/suzy/full/suzy-01.jpg" target="_blank" rel="noopener noreferrer">
     <img src="/images/suzy/01.jpg" alt="Suzy (with a Z) still 1" loading="lazy">
@@ -49,9 +27,4 @@ Egg?</p>
     <img src="/images/suzy/06.jpg" alt="Suzy (with a Z) still 6" loading="lazy">
   </a>
 </div>
-
-</section>
-
-</main>
-</body>
-</html>
+```

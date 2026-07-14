@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gatorade Keeper Bottle — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<main>
+---
+title: Gatorade Keeper Bottle
+type: project
+---
 
-<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/articles/">Articles</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>
+Design made for a new branding of Gatorade bottles. Keeper Bottle modeled in Blender, animated, shaded and lit in Cinema 4D + Redshift by me.
 
-<section>
-  <h2>Gatorade Keeper Bottle</h2>
-
-<p>Design made for a new branding of Gatorade bottles. Keeper Bottle
-modeled in Blender, animated, shaded and lit in Cinema 4D + Redshift by
-me.</p>
+```{=html}
 <div class="project-images">
   <a href="/images/gatorade-keeper-bottle/full/gatorade-keeper-01.jpg" target="_blank" rel="noopener noreferrer">
     <img src="/images/gatorade-keeper-bottle/01.jpg" alt="Gatorade Keeper Bottle still 1" loading="lazy">
@@ -52,9 +32,4 @@ me.</p>
     <img src="/images/gatorade-keeper-bottle/08.jpg" alt="Gatorade Keeper Bottle still 8" loading="lazy">
   </a>
 </div>
-
-</section>
-
-</main>
-</body>
-</html>
+```

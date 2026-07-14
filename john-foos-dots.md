@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>John Foos — DOTS — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<main>
+---
+title: John Foos — DOTS
+type: project
+---
 
-<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/articles/">Articles</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>
+Project made at Aleta Media with the team I work with. I modeled the shoe in Blender and its materials in Cinema 4D + Redshift, and animated the scenes screencapped below (except for the closing shot, animated by my boss). The rest of the models, shading and animation were also made in C4D.
 
-<section>
-  <h2>John Foos — DOTS</h2>
-
-<p>Project made at Aleta Media with the team I work with. I modeled the
-shoe in Blender and its materials in Cinema 4D + Redshift, and animated
-the scenes screencapped below (except for the closing shot, animated by
-my boss). The rest of the models, shading and animation were also made
-in C4D.</p>
+```{=html}
 <div class="project-images">
   <a href="/images/john-foos-dots/full/john-foos-01.jpg" target="_blank" rel="noopener noreferrer">
     <img src="/images/john-foos-dots/01.jpg" alt="John Foos — DOTS still 1" loading="lazy">
@@ -57,9 +35,4 @@ in C4D.</p>
     <img src="/images/john-foos-dots/09.jpg" alt="John Foos — DOTS still 9" loading="lazy">
   </a>
 </div>
-
-</section>
-
-</main>
-</body>
-</html>
+```

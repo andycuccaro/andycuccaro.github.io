@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gatorade GX Bottle — Legacy — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<main>
+---
+title: Gatorade GX Bottle — Legacy
+type: project
+---
 
-<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/articles/">Articles</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>
+Gatorade bottle that I modeled, animated and shaded for my job at Aleta Media. Modeled in Blender, animated and shaded in Cinema 4D and Redshift.
 
-<section>
-  <h2>Gatorade GX Bottle — Legacy</h2>
-
-<p>Gatorade bottle that I modeled, animated and shaded for my job at
-Aleta Media. Modeled in Blender, animated and shaded in Cinema 4D and
-Redshift.</p>
+```{=html}
 <video controls preload="metadata">
   <source src="/images/gatorade-gx/full/VID/gatorade-gx-01.mp4" type="video/mp4">
   Your browser doesn't support embedded video. <a href="/images/gatorade-gx/full/VID/gatorade-gx-01.mp4">Download the video</a> instead.
@@ -51,9 +31,4 @@ Redshift.</p>
     <img src="/images/gatorade-gx/06.jpg" alt="Gatorade GX Bottle — Legacy still 6" loading="lazy">
   </a>
 </div>
-
-</section>
-
-</main>
-</body>
-</html>
+```

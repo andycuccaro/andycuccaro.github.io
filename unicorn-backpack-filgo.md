@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unicorn Backpack — Filgo Ad — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<main>
+---
+title: Unicorn Backpack — Filgo Ad
+type: project
+---
 
-<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/articles/">Articles</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>
+Filgo ad made for a "Back to school" campaign. I modeled, animated, shaded and lit the whole animation — the only thing I didn't model were the school supplies. The backpack was modeled, UVed and rigged in Blender, and animated, shaded and lit in Cinema 4D + Redshift.
 
-<section>
-  <h2>Unicorn Backpack — Filgo Ad</h2>
-
-<p>Filgo ad made for a “Back to school” campaign. I modeled, animated,
-shaded and lit the whole animation — the only thing I didn’t model were
-the school supplies. The backpack was modeled, UVed and rigged in
-Blender, and animated, shaded and lit in Cinema 4D + Redshift.</p>
+```{=html}
 <video controls preload="metadata">
   <source src="/images/unicorn-backpack-filgo/full/vid/mochila-filgo-01.mp4" type="video/mp4">
   Your browser doesn't support embedded video. <a href="/images/unicorn-backpack-filgo/full/vid/mochila-filgo-01.mp4">Download the video</a> instead.
@@ -49,9 +28,4 @@ Blender, and animated, shaded and lit in Cinema 4D + Redshift.</p>
     <img src="/images/unicorn-backpack-filgo/05.jpg" alt="Unicorn Backpack — Filgo Ad still 5" loading="lazy">
   </a>
 </div>
-
-</section>
-
-</main>
-</body>
-</html>
+```

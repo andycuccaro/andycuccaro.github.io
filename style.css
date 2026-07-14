@@ -48,9 +48,21 @@ h1 a:visited {
 
 header {
   text-align: center;
+  background: #f2f2f2;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 1.5rem;
+  padding: 1.75rem 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+header h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 nav {
@@ -64,11 +76,13 @@ nav {
 nav a {
   text-decoration: none;
   color: #333;
-  border-bottom: 1px solid transparent;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.35rem;
+  transition: background-color 0.15s ease;
 }
 
 nav a:hover {
-  border-bottom-color: #333;
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
 .video-wrapper {
@@ -113,6 +127,7 @@ nav a:hover {
 
 .project-card span {
   margin-top: 0.5rem;
+  padding: 0 0.25rem;
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -234,9 +249,9 @@ a:visited {
   }
   .link-list a:hover { border-color: #777; }
   nav a { color: #ddd; }
-  nav a:hover { border-bottom-color: #ddd; }
+  nav a:hover { background-color: rgba(255, 255, 255, 0.1); }
   .project-card { background: #2a2a2a; color: #ddd; }
   .project-card:hover { background: #383838; }
   .img-placeholder { background: #2a2a2a; color: #aaa; }
-  header { border-color: #333; }
+  header { background: #191919; border-color: #333; }
 }

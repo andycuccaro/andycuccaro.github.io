@@ -3,7 +3,7 @@ title: About
 type: page
 ---
 
-<p class="meta">Villa Crespo, Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>
+<p class="meta">Belgrano, Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>
 
 3D generalist specializing in modeling, shading, lighting and animation for product visualization and advertising, with a background in illustration and character animation.
 
@@ -11,7 +11,7 @@ type: page
 
 **Advanced:** After Effects, Blender, Cinema 4D, Redshift, Photoshop, Linux.
 
-**Medium:** Maya, Illustrator, 3DS Max, Zbrush, RealFlow, MS Office, Moho, GIMP, Krita.
+**Medium:** Maya, Illustrator, 3DS Max, Zbrush, RealFlow, MS Office, Moho, Krita.
 
 **Beginner:** HTML, CSS, WordPress.
 

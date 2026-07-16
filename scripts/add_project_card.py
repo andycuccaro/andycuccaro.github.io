@@ -17,15 +17,15 @@ def main():
         content = f.read()
 
     card = (
-        f'    <a class="project-card" href="/projects/{slug}/">\n'
-        f'      <img src="/projects/{slug}/media/img/thumb.webp" alt="{title} thumbnail" loading="lazy">\n'
+        f'    <a class="project-card" href="/posts/{slug}/">\n'
+        f'      <img src="/posts/{slug}/media/img/thumb.webp" alt="{title} thumbnail" loading="lazy">\n'
         f'      <span>{title}</span>\n'
         f'    </a>'
     )
 
     # Buscar si ya existe una card para este slug (por su href)
     existing_pattern = re.compile(
-        r'    <a class="project-card" href="/projects/' + re.escape(slug) + r'/">.*?</a>',
+        r'    <a class="project-card" href="/posts/' + re.escape(slug) + r'/">.*?</a>',
         re.DOTALL
     )
 

@@ -1,6 +1,6 @@
 ---
 title: About
-type: page
+type: Page
 ---
 
 <p class="meta">Belgrano, Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>

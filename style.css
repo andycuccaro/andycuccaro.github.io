@@ -10,7 +10,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   margin: 0;
-  color: #111;
+  color: #333;
   background: #fff;
 }
 
@@ -31,7 +31,7 @@ h1 a {
 }
 
 h1 a:visited {
-  color: inherit;
+  /* color: inherit; */
 }
 
 .role {
@@ -89,7 +89,7 @@ footer a:hover {
 }
 
 nav {
-  margin: 0.75rem 0 1.25rem;
+  margin: 0.75rem 0 0 0;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -135,28 +135,29 @@ nav a:hover {
   flex-direction: column;
   text-decoration: none;
   color: #333;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   overflow: hidden;
+  background: #f2f2f2
 }
 
 .project-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: #e2e2e2;
-  border-radius: 0.3rem;
+  /* background: #e2e2e2; */
+  border-radius: 0.3rem 0 0;
   display: block;
 }
 
 .project-card span {
-  margin-top: 0.5rem;
-  padding: 0 0.25rem;
+  /* margin-top: 0.5rem; */
+  padding: 0.5rem;
   font-weight: 600;
   font-size: 0.95rem;
 }
 
 .project-card:hover img {
-  opacity: 0.85;
+  /* opacity: 0.85; */
 }
 
 video {
@@ -216,12 +217,12 @@ article {
 }
 
 a {
-  color: #0645ad;
+  color: #333;
 }
 
-a:visited {
-  color: #0645ad;
-}
+/* a:visited {
+  color: #444;
+} */
 
 /* links.html */
 .links-page {
@@ -264,8 +265,8 @@ a:visited {
   .meta { color: #999; }
   h2 { border-color: #333; }
   .dates { color: #999; }
-  a { color: #8ab4ff; }
-  a:visited { color: #8ab4ff; }
+  a { color: #eee; }
+  /* a:visited { color: #eee; } */
   .link-list a {
     border-color: #444;
     color: #eee;
@@ -273,8 +274,8 @@ a:visited {
   .link-list a:hover { border-color: #777; }
   nav a { color: #ddd; }
   nav a:hover { background-color: rgba(255, 255, 255, 0.1); }
-  .project-card { background: #2a2a2a; color: #ddd; }
-  .project-card:hover { background: #383838; }
+  .project-card { background: #191919; color: #ddd; }
+  .project-card:hover { /* background: #383838; */ }
   .img-placeholder { background: #2a2a2a; color: #aaa; }
   header { background: #191919; border-color: #333; }
   footer { background: #191919; border-color: #333; color: #999; }

@@ -136,7 +136,7 @@ nav a:hover {
   flex-direction: column;
   text-decoration: none;
   color: #333;
-  border-radius: 0.3rem;
+  border-radius: 0.5srem;
   overflow: hidden;
   background: #f2f2f2;
 }
@@ -146,7 +146,7 @@ nav a:hover {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   background: #e2e2e2;
-  border-radius: 0.3rem;
+  /* border-radius: 0.3rem 0 0; */
   display: block;
 }
 

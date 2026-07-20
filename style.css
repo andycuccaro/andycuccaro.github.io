@@ -254,12 +254,24 @@ a {
 }
 
 .link-list a {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
   padding: 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 0.4rem;
   text-decoration: none;
   color: #111;
+}
+
+.link-title {
+  font-weight: 600;
+}
+
+.link-desc {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: #666;
 }
 
 .link-list a:hover {
@@ -285,6 +297,7 @@ a {
     border-color: #444;
     color: #eee;
   }
+  .link-desc { color: #999; }
   .link-list a:hover { border-color: #777; }
   nav a { color: #ddd; }
   nav a:hover { background-color: rgba(255, 255, 255, 0.1); }

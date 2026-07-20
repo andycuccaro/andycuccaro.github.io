@@ -136,7 +136,7 @@ nav a:hover {
   flex-direction: column;
   text-decoration: none;
   color: #333;
-  border-radius: 0.5srem;
+  border-radius: 0.5rem;
   overflow: hidden;
   background: #f2f2f2;
 }

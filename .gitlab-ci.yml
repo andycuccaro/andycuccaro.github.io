@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - cp -r index.html style.css og-image.jpg about posts links public/
+    - tar --exclude='./.git' --exclude='./public' --exclude='./templates' --exclude='./scripts' --exclude='./publish.sh' --exclude='./.gitlab-ci.yml' -cf - . | tar -xf - -C public
   artifacts:
     paths:
       - public

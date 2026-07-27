@@ -30,3 +30,12 @@ Can you spot every Easter Egg?
   </a>
 </div>
 ```
+
+## Behind the Scenes
+
+- [Making Of](/posts/suzy/making-of/)
+- [Concept Art](/posts/suzy/concept-art/)
+- [Character Designs](/posts/suzy/character-designs/)
+- [Wireframes](/posts/suzy/wireframes/)
+- [Animation Tests](/posts/suzy/animation-tests/)
+- [Post-Production](/posts/suzy/postpro/)

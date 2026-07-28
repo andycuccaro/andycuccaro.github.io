@@ -3,7 +3,7 @@ title: About
 type: Page
 ---
 
-<p class="meta">Belgrano, Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>
+<p class="meta">Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>
 
 3D generalist specializing in modeling, shading, lighting and animation for product visualization and advertising, with a background in illustration and character animation.
 

@@ -243,6 +243,39 @@ a {
   text-align: center;
 }
 
+.card-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.4rem;
+  background: #f2f2f2;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.card-list a:hover {
+  background: #e2e2e2;
+}
+
+.card-list .dates {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #666;
+}
+
 .link-list {
   list-style: none;
   padding: 0;
@@ -276,6 +309,7 @@ a {
 
 .link-list a:hover {
   border-color: #888;
+  background-color: #f2f2f2;
 }
 
 .back {
@@ -298,7 +332,10 @@ a {
     color: #eee;
   }
   .link-desc { color: #999; }
-  .link-list a:hover { border-color: #777; }
+  .link-list a:hover { border-color: #777; background-color: #1e1e1e; }
+  .card-list a { background: #1e1e1e; color: #eee; }
+  .card-list a:hover { background: #2a2a2a; }
+  .card-list .dates { color: #999; }
   nav a { color: #ddd; }
   nav a:hover { background-color: rgba(255, 255, 255, 0.1); }
   .project-card { background: #191919; color: #ddd; }

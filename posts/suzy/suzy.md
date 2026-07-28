@@ -33,9 +33,13 @@ Can you spot every Easter Egg?
 
 ## Behind the Scenes
 
-- [Making Of](/posts/suzy/making-of/)
-- [Concept Art](/posts/suzy/concept-art/)
-- [Character Designs](/posts/suzy/character-designs/)
-- [Wireframes](/posts/suzy/wireframes/)
-- [Animation Tests](/posts/suzy/animation-tests/)
-- [Post-Production](/posts/suzy/postpro/)
+```{=html}
+<ul class="card-list">
+  <li><a href="/posts/suzy/making-of/"><span>Making Of</span></a></li>
+  <li><a href="/posts/suzy/concept-art/"><span>Concept Art</span></a></li>
+  <li><a href="/posts/suzy/character-designs/"><span>Character Designs</span></a></li>
+  <li><a href="/posts/suzy/wireframes/"><span>Wireframes</span></a></li>
+  <li><a href="/posts/suzy/animation-tests/"><span>Animation Tests</span></a></li>
+  <li><a href="/posts/suzy/postpro/"><span>Post-Production</span></a></li>
+</ul>
+```

@@ -320,6 +320,32 @@ a {
   font-size: 0.9rem;
 }
 
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.25rem;
+  gap: 0.5rem;
+}
+
+.error-code {
+  font-family: Futura, "Century Gothic", "Trebuchet MS", sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ddd;
+  margin: 0;
+}
+
+.error-msg {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0 0 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
@@ -348,6 +374,8 @@ a {
   .project-card:hover span { color: #111; }
   .img-placeholder { background: #2a2a2a; color: #aaa; }
   header { background: #191919; border-color: #333; }
+  .error-code { color: #333; }
+  .error-msg { color: #999; }
   footer { background: #191919; border-color: #333; color: #999; }
   footer a { color: #999; }
   footer a:hover { color: #eee; }

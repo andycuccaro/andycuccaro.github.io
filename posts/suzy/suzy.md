@@ -10,16 +10,16 @@ Can you spot every Easter Egg?
 
 ```{=html}
 <div class="project-images">
-  <a href="/posts/suzy/media/img/full/suzy-01.jpg" target="_blank" rel="noopener noreferrer">
+  <a href="/posts/suzy/media/img/full/suzy-01.png" target="_blank" rel="noopener noreferrer">
     <img src="/posts/suzy/media/img/01.webp" alt="Suzy (with a Z) still 1" loading="lazy">
   </a>
-  <a href="/posts/suzy/media/img/full/suzy-02.jpg" target="_blank" rel="noopener noreferrer">
+  <a href="/posts/suzy/media/img/full/suzy-02.png" target="_blank" rel="noopener noreferrer">
     <img src="/posts/suzy/media/img/02.webp" alt="Suzy (with a Z) still 2" loading="lazy">
   </a>
-  <a href="/posts/suzy/media/img/full/suzy-03.jpg" target="_blank" rel="noopener noreferrer">
+  <a href="/posts/suzy/media/img/full/suzy-03.png" target="_blank" rel="noopener noreferrer">
     <img src="/posts/suzy/media/img/03.webp" alt="Suzy (with a Z) still 3" loading="lazy">
   </a>
-  <a href="/posts/suzy/media/img/full/suzy-04.jpg" target="_blank" rel="noopener noreferrer">
+  <a href="/posts/suzy/media/img/full/suzy-04.png" target="_blank" rel="noopener noreferrer">
     <img src="/posts/suzy/media/img/04.webp" alt="Suzy (with a Z) still 4" loading="lazy">
   </a>
   <a href="/posts/suzy/media/img/full/suzy-05.jpg" target="_blank" rel="noopener noreferrer">

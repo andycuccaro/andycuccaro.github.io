@@ -1,0 +1,24 @@
+// Nunca sincronizar .git — Syncthing podría escribir sobre esta carpeta
+// mientras Git está operando en la PC, y corromper el historial
+.git
+
+// Herramientas del pipeline — no las editás desde el celu
+templates
+scripts
+publish.sh
+.gitlab-ci.yml
+
+// Carpetas de media (imágenes/video pesados) — no los editás desde el celu
+media
+
+// Por si algún archivo binario queda suelto fuera de una carpeta "media"
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.mp4
+*.webm
+*.ico
+
+// HTML generado — se regenera solo con publish.sh en la PC, no hace falta llevarlo
+*.html

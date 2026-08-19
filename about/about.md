@@ -3,7 +3,9 @@ title: About
 type: Page
 ---
 
-<p class="meta">Buenos Aires, Argentina · <a href="mailto:andycuccaro@pm.me">andycuccaro@pm.me</a></p>
+```{=html}
+<p class="meta">Buenos Aires, Argentina · <a href="mailto:&#97;&#110;&#100;&#121;&#99;&#117;&#99;&#99;&#97;&#114;&#111;&#64;&#112;&#109;&#46;&#109;&#101;">&#97;&#110;&#100;&#121;&#99;&#117;&#99;&#99;&#97;&#114;&#111;&#64;&#112;&#109;&#46;&#109;&#101;</a></p>
+```
 
 3D generalist specializing in modeling, shading, lighting and animation for product visualization and advertising, with a background in illustration and character animation.
 

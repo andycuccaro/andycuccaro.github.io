@@ -29,3 +29,5 @@ fi
 if [ "$TYPE" != "Page" ]; then
   echo "  Recordá agregar/actualizar la línea correspondiente en posts/index.html."
 fi
+
+python3 scripts/generate_feed.py

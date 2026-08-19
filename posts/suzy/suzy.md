@@ -2,6 +2,7 @@
 title: Suzy (with a Z)
 type: Project
 portfolio: true
+date: 2026-01-01
 ---
 
 She's Suzy, the protagonist of my short film "Suzy (with a Z)". A routine day for college student Suzy unravels after strange glitches around her room reveal she's an animated character, exposing the hidden truth behind her world and forcing her to question her own existence.

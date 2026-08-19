@@ -2,6 +2,7 @@
 title: TCL L98C735 Google TV QLED 4K 98”
 type: Project
 portfolio: true
+date: 2022-01-01
 ---
 
 A project where I was tasked with 3d modeling a TV from TCL for a launch campaign. Modeled in Blender, materials and lighting in Cinema 4D + Redshift.

@@ -2,6 +2,7 @@
 title: John Foos — DOTS
 type: Project
 portfolio: true
+date: 2023-01-01
 ---
 
 Project made at Aleta Media with the team I work with. I modeled the shoe in Blender and its materials in Cinema 4D + Redshift, and animated the scenes screencapped below (except for the closing shot, animated by my boss). The rest of the models, shading and animation were also made in C4D.

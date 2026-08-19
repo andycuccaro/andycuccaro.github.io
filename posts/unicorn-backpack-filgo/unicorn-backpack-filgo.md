@@ -2,6 +2,7 @@
 title: Unicorn Backpack — Filgo Ad
 type: Project
 portfolio: true
+date: 2024-01-01
 ---
 
 Filgo ad made for a "Back to school" campaign. I modeled, animated, shaded and lit the whole animation — the only thing I didn't model were the school supplies. The backpack was modeled, UVed and rigged in Blender, and animated, shaded and lit in Cinema 4D + Redshift.

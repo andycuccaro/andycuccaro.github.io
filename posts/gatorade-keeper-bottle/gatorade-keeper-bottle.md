@@ -3,6 +3,10 @@ title: Gatorade Keeper Bottle
 type: Project
 portfolio: true
 date: 2023-01-01
+tags:
+  - blender
+  - cinema4d
+  - product-viz
 ---
 
 Design made for a new branding of Gatorade bottles. Keeper Bottle modeled in Blender, animated, shaded and lit in Cinema 4D + Redshift by me.

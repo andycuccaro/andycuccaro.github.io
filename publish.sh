@@ -31,3 +31,4 @@ if [ "$TYPE" != "Page" ]; then
 fi
 
 python3 scripts/generate_feed.py
+python3 scripts/generate_tags.py

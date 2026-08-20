@@ -234,6 +234,34 @@ h3 {
   margin: 0 0 0.35rem;
 }
 
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: #555;
+  background: #eee;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  transition: background-color 0.15s ease;
+}
+
+.tag-pill:hover {
+  background: #ddd;
+}
+
+#related-posts h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 article {
   margin-bottom: 1.25rem;
 }
@@ -378,6 +406,8 @@ a {
   .project-card:hover span { color: #111; }
   .img-placeholder { background: #2a2a2a; color: #aaa; }
   header { background: #191919; border-color: #333; }
+  .tag-pill { background: #262626; color: #bbb; }
+  .tag-pill:hover { background: #333; }
   .error-code { color: #333; }
   .error-msg { color: #999; }
   footer { background: #191919; border-color: #333; color: #999; }

@@ -248,7 +248,7 @@ h3 {
   text-decoration: none;
   color: #555;
   background: #eee;
-  padding: 0.2rem 0.6rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 0.4rem;
   transition: background-color 0.15s ease;
 }
@@ -273,7 +273,7 @@ h3 {
   text-decoration: none;
   color: #fff;
   background: #0645ad;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 0 0.4rem 0.4rem 0;
   align-self: stretch;
   display: flex;

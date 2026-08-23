@@ -40,7 +40,7 @@
 <article>
   <h1 class="post-title">$title$</h1>
   $if(type)$<p class="dates">$type$$if(date)$ · $date$$endif$</p>$endif$
-  $if(tags)$<p class="tags">$for(tags)$<a class="tag-pill" href="/tags/$tags$/">$tags$</a>$sep$ $endfor$</p>$endif$
+  <div id="tags-block"></div>
 
 $body$
 

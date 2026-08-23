@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Andy Cuccaro — #life</title>
+  <link>https://andycuccaro.info/</link>
+  <description>Posts tagged #life</description>
+  <language>en</language>
+  <atom:link href="https://andycuccaro.info/tags/life/feed.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Sun, 23 Aug 2026 21:05:03 GMT</lastBuildDate>
+  <item>
+    <title>Hello World</title>
+    <link>https://andycuccaro.info/posts/hello-world/</link>
+    <guid>https://andycuccaro.info/posts/hello-world/</guid>
+    <pubDate>Mon, 13 Jul 2026 00:00:00 -0000</pubDate>
+    <description>Article</description>
+  </item>
+</channel>
+</rss>

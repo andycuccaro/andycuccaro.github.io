@@ -2,6 +2,8 @@
 title: Hello World
 type: Article
 date: 2026-07-13
+tags:
+  - topic/life
 ---
 
 This is my **first** blog post (not portfolio) on my site. Here I'll be sharing what I know, my own thoughts and some work I've made. I don't expect it to become super popular, but I just needed a place to place my things and this seems like as good a place as it could be. 

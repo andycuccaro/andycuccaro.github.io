@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Andy Cuccaro</title>
+  <title>Andy Cuccaro — #art</title>
   <link>https://andycuccaro.info/</link>
-  <description>2D &amp; 3D Artist based in Buenos Aires — portfolio, articles and posts.</description>
+  <description>Posts tagged #art</description>
   <language>en</language>
-  <atom:link href="https://andycuccaro.info/feed.xml" rel="self" type="application/rss+xml" />
-  <lastBuildDate>Sun, 23 Aug 2026 21:05:02 GMT</lastBuildDate>
-  <item>
-    <title>Hello World</title>
-    <link>https://andycuccaro.info/posts/hello-world/</link>
-    <guid>https://andycuccaro.info/posts/hello-world/</guid>
-    <pubDate>Mon, 13 Jul 2026 00:00:00 -0000</pubDate>
-    <description>Article</description>
-  </item>
-  <item>
-    <title>Suzy (with a Z)</title>
-    <link>https://andycuccaro.info/posts/suzy/</link>
-    <guid>https://andycuccaro.info/posts/suzy/</guid>
-    <pubDate>Thu, 01 Jan 2026 00:00:00 -0000</pubDate>
-    <description>Project</description>
-  </item>
-  <item>
-    <title>Unicorn Backpack — Filgo Ad</title>
-    <link>https://andycuccaro.info/posts/unicorn-backpack-filgo/</link>
-    <guid>https://andycuccaro.info/posts/unicorn-backpack-filgo/</guid>
-    <pubDate>Mon, 01 Jan 2024 00:00:00 -0000</pubDate>
-    <description>Project</description>
-  </item>
+  <atom:link href="https://andycuccaro.info/tags/art/feed.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Sun, 23 Aug 2026 21:05:03 GMT</lastBuildDate>
   <item>
     <title>Gatorade Keeper Bottle</title>
     <link>https://andycuccaro.info/posts/gatorade-keeper-bottle/</link>

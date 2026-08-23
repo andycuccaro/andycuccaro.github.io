@@ -4,10 +4,11 @@ type: Project
 portfolio: true
 date: 2022-01-01
 tags:
-  - blender
-  - cinema4d
-  - product-viz
-  - redshift
+  - topic/art
+  - subtopic/blender
+  - subtopic/cinema4d
+  - subtopic/3d
+  - subtopic/animation
 ---
 
 A project where I was tasked with 3d modeling a TV from TCL for a launch campaign. Modeled in Blender, materials and lighting in Cinema 4D + Redshift.

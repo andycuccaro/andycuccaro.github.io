@@ -4,9 +4,11 @@ type: Project
 portfolio: true
 date: 2022-01-01
 tags:
-  - blender
-  - cinema4d
-  - product-viz
+  - topic/art
+  - subtopic/blender
+  - subtopic/cinema4d
+  - subtopic/3d
+  - subtopic/animation
 ---
 
 Gatorade bottle that I modeled, animated and shaded for my job at Aleta Media. Modeled in Blender, animated and shaded in Cinema 4D and Redshift.

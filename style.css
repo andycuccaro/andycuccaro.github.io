@@ -106,7 +106,7 @@ nav a {
   text-decoration: none;
   color: #333;
   padding: 0.3rem 0.7rem;
-  border-radius: 0.35rem;
+  border-radius: 0.4rem;
   transition: background-color 0.15s ease;
 }
 
@@ -142,7 +142,7 @@ nav a:hover {
   flex-direction: column;
   text-decoration: none;
   color: #333;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   overflow: hidden;
   background: #f2f2f2;
 }
@@ -184,7 +184,7 @@ nav a:hover {
 
 video {
   width: 100%;
-  border-radius: 0.3rem;
+  border-radius: 0.4rem;
   display: block;
   margin-top: 1rem;
 }
@@ -198,7 +198,7 @@ video {
 
 .project-images img {
   width: 100%;
-  border-radius: 0.3rem;
+  border-radius: 0.4rem;
   display: block;
 }
 
@@ -213,7 +213,7 @@ video {
   align-items: center;
   justify-content: center;
   color: #666;
-  border-radius: 0.3rem;
+  border-radius: 0.4rem;
 }
 
 h2 {
@@ -249,12 +249,40 @@ h3 {
   color: #555;
   background: #eee;
   padding: 0.2rem 0.6rem;
-  border-radius: 1rem;
+  border-radius: 0.4rem;
   transition: background-color 0.15s ease;
 }
 
 .tag-pill:hover {
   background: #ddd;
+}
+
+.tag-group {
+  display: inline-flex;
+}
+
+.tag-pill.is-topic {
+  border-radius: 0.4rem 0 0 0.4rem;
+}
+
+.tag-rss {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: #0645ad;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.tag-rss:hover {
+  background: #043a8c;
 }
 
 #related-posts h2 {
@@ -407,6 +435,8 @@ a {
   .img-placeholder { background: #2a2a2a; color: #aaa; }
   header { background: #191919; border-color: #333; }
   .tag-pill { background: #262626; color: #bbb; }
+  .tag-rss { background: #3a6dd8; }
+  .tag-rss:hover { background: #5182e6; }
   .tag-pill:hover { background: #333; }
   .error-code { color: #333; }
   .error-msg { color: #999; }

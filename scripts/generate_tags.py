@@ -113,6 +113,15 @@ def card_list_html(posts):
     return f'<ul class="card-list">\n{items}</ul>'
 
 
+def split_tag(raw):
+    """'topic/art' -> ('art', 'topic'); 'blender' (sin prefijo) -> ('blender', 'subtopic')."""
+    if raw.startswith("topic/"):
+        return raw[len("topic/"):], "topic"
+    if raw.startswith("subtopic/"):
+        return raw[len("subtopic/"):], "subtopic"
+    return raw, "subtopic"  # sin prefijo: tratamos como subtopic (sin feed) por seguridad
+
+
 def main():
     posts = []
     for path in glob.glob("posts/*/*.md"):
@@ -123,18 +132,29 @@ def main():
         meta = parse_front_matter(path)
         if not meta or "title" not in meta:
             continue
-        tags = meta.get("tags", [])
-        if isinstance(tags, str):
-            tags = [tags] if tags else []
+        raw_tags = meta.get("tags", [])
+        if isinstance(raw_tags, str):
+            raw_tags = [raw_tags] if raw_tags else []
+        tags = [split_tag(t)[0] for t in raw_tags]  # nombres pelados, para related/tag_map
         posts.append({
             "slug": slug,
             "title": meta["title"],
             "type": meta.get("type", ""),
             "date": meta.get("date", ""),
             "tags": tags,
+            "raw_tags": raw_tags,
         })
 
     posts.sort(key=lambda p: p.get("date", ""), reverse=True)
+
+    # --- Clasificar cada tag pelado como topic o subtopic ---
+    # (si aparece como topic/ en CUALQUIER post, se lo considera topic)
+    tag_kind = {}
+    for p in posts:
+        for raw in p["raw_tags"]:
+            name, kind = split_tag(raw)
+            if tag_kind.get(name) != "topic":
+                tag_kind[name] = kind
 
     # --- Páginas por etiqueta ---
     tag_map = {}
@@ -143,9 +163,14 @@ def main():
             tag_map.setdefault(t, []).append(p)
 
     for tag, tag_posts in tag_map.items():
+        is_topic = tag_kind.get(tag) == "topic"
         os.makedirs(f"tags/{tag}", exist_ok=True)
 
-        feed_link = f'<link rel="alternate" type="application/rss+xml" title="Andy Cuccaro — #{tag}" href="/tags/{tag}/feed.xml">\n'
+        if is_topic:
+            feed_link = f'<link rel="alternate" type="application/rss+xml" title="Andy Cuccaro — #{tag}" href="/tags/{tag}/feed.xml">\n'
+        else:
+            feed_link = ""
+
         html = PAGE_TEMPLATE.format(
             title=f"#{tag}",
             feed_link=feed_link,
@@ -156,6 +181,9 @@ def main():
         )
         with open(f"tags/{tag}/index.html", "w", encoding="utf-8") as f:
             f.write(html)
+
+        if not is_topic:
+            continue  # los subtopics no llevan feed.xml
 
         # Feed RSS de la etiqueta (mismos posts, mismo criterio de fecha que feed.xml general)
         feed_items = []
@@ -181,22 +209,68 @@ def main():
         with open(f"tags/{tag}/feed.xml", "w", encoding="utf-8") as f:
             f.write(feed_xml)
 
-    # --- Índice de todas las etiquetas ---
+    # --- Índice de todas las etiquetas, separado en Topics / Subtopics ---
     os.makedirs("tags", exist_ok=True)
-    tag_pills = " ".join(
-        f'<a class="tag-pill" href="/tags/{t}/">{t} ({len(ps)})</a>'
-        for t, ps in sorted(tag_map.items())
-    )
+
+    def pills_for(names):
+        return " ".join(
+            f'<a class="tag-pill" href="/tags/{t}/">{t} ({len(tag_map[t])})</a>'
+            for t in names
+        )
+
+    topic_names = sorted(t for t in tag_map if tag_kind.get(t) == "topic")
+    subtopic_names = sorted(t for t in tag_map if tag_kind.get(t) != "topic")
+
+    body_parts = []
+    if topic_names:
+        body_parts.append(f'<h2>Topics</h2>\n<p class="tags">{pills_for(topic_names)}</p>')
+    if subtopic_names:
+        body_parts.append(f'<h2>Subtopics</h2>\n<p class="tags">{pills_for(subtopic_names)}</p>')
+    body = "\n".join(body_parts) if body_parts else "<p>No tags yet.</p>"
+
     html = PAGE_TEMPLATE.format(
         title="Tags",
         feed_link="",
         header=HEADER,
         heading="Tags",
-        body=f'<p class="tags">{tag_pills}</p>' if tag_pills else "<p>No tags yet.</p>",
+        body=body,
         footer=FOOTER,
     )
     with open("tags/index.html", "w", encoding="utf-8") as f:
         f.write(html)
+
+    # --- Inyectar chips de tags en cada post ya generado ---
+    for p in posts:
+        index_path = f"posts/{p['slug']}/index.html"
+        if not os.path.exists(index_path):
+            continue
+        with open(index_path, encoding="utf-8") as f:
+            html = f.read()
+
+        if p["tags"]:
+            chips = ""
+            for t in p["tags"]:
+                if tag_kind.get(t) == "topic":
+                    chips += (
+                        f'<span class="tag-group">'
+                        f'<a class="tag-pill is-topic" href="/tags/{t}/">{t}</a>'
+                        f'<a class="tag-rss" href="/tags/{t}/feed.xml" title="Subscribe to #{t} via RSS">RSS</a>'
+                        f'</span> '
+                    )
+                else:
+                    chips += f'<a class="tag-pill" href="/tags/{t}/">{t}</a> '
+            tags_html = f'<div id="tags-block"><p class="tags">{chips.strip()}</p></div>'
+        else:
+            tags_html = '<div id="tags-block"></div>'
+
+        html = re.sub(
+            r'<div id="tags-block">.*?</div>',
+            tags_html.replace("\\", "\\\\"),
+            html,
+            flags=re.DOTALL,
+        )
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(html)
 
     # --- Inyectar "Related Posts" en cada post ya generado ---
     for p in posts:

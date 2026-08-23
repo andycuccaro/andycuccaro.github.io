@@ -6,14 +6,7 @@
   <description>Posts tagged #cinema4d</description>
   <language>en</language>
   <atom:link href="https://andycuccaro.info/tags/cinema4d/feed.xml" rel="self" type="application/rss+xml" />
-  <lastBuildDate>Sat, 22 Aug 2026 16:15:32 GMT</lastBuildDate>
-  <item>
-    <title>Gatorade Keeper Bottle</title>
-    <link>https://andycuccaro.info/posts/gatorade-keeper-bottle/</link>
-    <guid>https://andycuccaro.info/posts/gatorade-keeper-bottle/</guid>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 -0000</pubDate>
-    <description>Project</description>
-  </item>
+  <lastBuildDate>Sun, 23 Aug 2026 16:53:41 GMT</lastBuildDate>
   <item>
     <title>John Foos — DOTS</title>
     <link>https://andycuccaro.info/posts/john-foos-dots/</link>
@@ -22,16 +15,23 @@
     <description>Project</description>
   </item>
   <item>
-    <title>TCL L98C735 Google TV QLED 4K 98”</title>
-    <link>https://andycuccaro.info/posts/tcl-tv/</link>
-    <guid>https://andycuccaro.info/posts/tcl-tv/</guid>
-    <pubDate>Sat, 01 Jan 2022 00:00:00 -0000</pubDate>
+    <title>Gatorade Keeper Bottle</title>
+    <link>https://andycuccaro.info/posts/gatorade-keeper-bottle/</link>
+    <guid>https://andycuccaro.info/posts/gatorade-keeper-bottle/</guid>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 -0000</pubDate>
     <description>Project</description>
   </item>
   <item>
     <title>Gatorade GX Bottle — Legacy</title>
     <link>https://andycuccaro.info/posts/gatorade-gx/</link>
     <guid>https://andycuccaro.info/posts/gatorade-gx/</guid>
+    <pubDate>Sat, 01 Jan 2022 00:00:00 -0000</pubDate>
+    <description>Project</description>
+  </item>
+  <item>
+    <title>TCL L98C735 Google TV QLED 4K 98”</title>
+    <link>https://andycuccaro.info/posts/tcl-tv/</link>
+    <guid>https://andycuccaro.info/posts/tcl-tv/</guid>
     <pubDate>Sat, 01 Jan 2022 00:00:00 -0000</pubDate>
     <description>Project</description>
   </item>

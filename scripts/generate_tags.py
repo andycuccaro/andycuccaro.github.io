@@ -12,6 +12,9 @@ igual que generate_feed.py — no incluye sub-páginas anidadas.
 import glob
 import os
 import re
+from datetime import datetime
+
+from rss_utils import SITE_URL, build_rss
 
 SITE_TITLE = "Andy Cuccaro"
 
@@ -45,7 +48,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <link rel="icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — Andy Cuccaro</title>
-<link rel="stylesheet" href="/style.css">
+{feed_link}<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -141,8 +144,11 @@ def main():
 
     for tag, tag_posts in tag_map.items():
         os.makedirs(f"tags/{tag}", exist_ok=True)
+
+        feed_link = f'<link rel="alternate" type="application/rss+xml" title="Andy Cuccaro — #{tag}" href="/tags/{tag}/feed.xml">\n'
         html = PAGE_TEMPLATE.format(
             title=f"#{tag}",
+            feed_link=feed_link,
             header=HEADER,
             heading=f"#{tag}",
             body=card_list_html(tag_posts),
@@ -150,6 +156,30 @@ def main():
         )
         with open(f"tags/{tag}/index.html", "w", encoding="utf-8") as f:
             f.write(html)
+
+        # Feed RSS de la etiqueta (mismos posts, mismo criterio de fecha que feed.xml general)
+        feed_items = []
+        for p in tag_posts:
+            try:
+                dt = datetime.strptime(p["date"][:10], "%Y-%m-%d")
+            except (ValueError, KeyError):
+                continue
+            feed_items.append({
+                "title": p["title"],
+                "type": p.get("type", ""),
+                "url": f"{SITE_URL}/posts/{p['slug']}/",
+                "date": dt,
+            })
+        feed_items.sort(key=lambda x: x["date"], reverse=True)
+
+        feed_xml = build_rss(
+            feed_items,
+            feed_title=f"{SITE_TITLE} — #{tag}",
+            feed_description=f"Posts tagged #{tag}",
+            feed_self_url=f"{SITE_URL}/tags/{tag}/feed.xml",
+        )
+        with open(f"tags/{tag}/feed.xml", "w", encoding="utf-8") as f:
+            f.write(feed_xml)
 
     # --- Índice de todas las etiquetas ---
     os.makedirs("tags", exist_ok=True)
@@ -159,6 +189,7 @@ def main():
     )
     html = PAGE_TEMPLATE.format(
         title="Tags",
+        feed_link="",
         header=HEADER,
         heading="Tags",
         body=f'<p class="tags">{tag_pills}</p>' if tag_pills else "<p>No tags yet.</p>",

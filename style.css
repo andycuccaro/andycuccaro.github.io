@@ -290,6 +290,40 @@ h3 {
   padding-bottom: 0;
 }
 
+.paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.paginator a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.paginator a:hover {
+  text-decoration: underline;
+}
+
+.paginator-disabled {
+  color: #bbb;
+}
+
+.paginator-pages {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.paginator-current {
+  font-weight: 700;
+}
+
 article {
   margin-bottom: 1.25rem;
 }
@@ -437,6 +471,9 @@ a {
   .tag-pill { background: #262626; color: #bbb; }
   .tag-rss { background: #3a6dd8; }
   .tag-rss:hover { background: #5182e6; }
+  .paginator { border-color: #333; }
+  .paginator a { color: #8ab4ff; }
+  .paginator-disabled { color: #555; }
   .tag-pill:hover { background: #333; }
   .error-code { color: #333; }
   .error-msg { color: #999; }

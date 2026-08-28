@@ -17,6 +17,7 @@ from datetime import datetime
 from rss_utils import SITE_URL, build_rss
 
 SITE_TITLE = "Andy Cuccaro"
+PAGE_SIZE = 25
 
 HEADER = '''<header>
   <h1><a href="/">Andy Cuccaro</a></h1>
@@ -122,6 +123,65 @@ def split_tag(raw):
     return raw, "subtopic"  # sin prefijo: tratamos como subtopic (sin feed) por seguridad
 
 
+def paginator_html(current, total, base_url):
+    """base_url sin barra final, ej. '/posts' o '/tags/blender'."""
+    if total <= 1:
+        return ""
+
+    def url_for(n):
+        return f"{base_url}/" if n == 1 else f"{base_url}/page/{n}/"
+
+    parts = ['<nav class="paginator">']
+    if current > 1:
+        parts.append(f'<a href="{url_for(current - 1)}">← Newer</a>')
+    else:
+        parts.append('<span class="paginator-disabled">← Newer</span>')
+
+    page_links = []
+    for n in range(1, total + 1):
+        if n == current:
+            page_links.append(f'<span class="paginator-current">{n}</span>')
+        else:
+            page_links.append(f'<a href="{url_for(n)}">{n}</a>')
+    parts.append('<span class="paginator-pages">' + " ".join(page_links) + '</span>')
+
+    if current < total:
+        parts.append(f'<a href="{url_for(current + 1)}">Older →</a>')
+    else:
+        parts.append('<span class="paginator-disabled">Older →</span>')
+    parts.append('</nav>')
+    return "\n" + "\n".join(parts)
+
+
+def paginate_and_write(items, base_dir, base_url, title, heading, feed_link=""):
+    """
+    Genera base_dir/index.html (página 1), base_dir/page/2/index.html, etc.
+    items ya debe venir ordenada (más reciente primero).
+    """
+    total_items = len(items)
+    num_pages = max(1, (total_items + PAGE_SIZE - 1) // PAGE_SIZE)
+
+    for page_num in range(1, num_pages + 1):
+        start = (page_num - 1) * PAGE_SIZE
+        chunk = items[start:start + PAGE_SIZE]
+        body = card_list_html(chunk)
+        body += paginator_html(page_num, num_pages, base_url)
+
+        out_dir = base_dir if page_num == 1 else f"{base_dir}/page/{page_num}"
+        os.makedirs(out_dir, exist_ok=True)
+
+        html = PAGE_TEMPLATE.format(
+            title=title if page_num == 1 else f"{title} — Page {page_num}",
+            feed_link=feed_link if page_num == 1 else "",
+            header=HEADER,
+            heading=heading,
+            body=body,
+            footer=FOOTER,
+        )
+        with open(f"{out_dir}/index.html", "w", encoding="utf-8") as f:
+            f.write(html)
+
+
 def main():
     posts = []
     for path in glob.glob("posts/*/*.md"):
@@ -164,23 +224,20 @@ def main():
 
     for tag, tag_posts in tag_map.items():
         is_topic = tag_kind.get(tag) == "topic"
-        os.makedirs(f"tags/{tag}", exist_ok=True)
 
         if is_topic:
             feed_link = f'<link rel="alternate" type="application/rss+xml" title="Andy Cuccaro — #{tag}" href="/tags/{tag}/feed.xml">\n'
         else:
             feed_link = ""
 
-        html = PAGE_TEMPLATE.format(
+        paginate_and_write(
+            tag_posts,
+            base_dir=f"tags/{tag}",
+            base_url=f"/tags/{tag}",
             title=f"#{tag}",
-            feed_link=feed_link,
-            header=HEADER,
             heading=f"#{tag}",
-            body=card_list_html(tag_posts),
-            footer=FOOTER,
+            feed_link=feed_link,
         )
-        with open(f"tags/{tag}/index.html", "w", encoding="utf-8") as f:
-            f.write(html)
 
         if not is_topic:
             continue  # los subtopics no llevan feed.xml
@@ -238,6 +295,15 @@ def main():
     )
     with open("tags/index.html", "w", encoding="utf-8") as f:
         f.write(html)
+
+    # --- Índice general de posts (/posts/), ahora generado y paginado ---
+    paginate_and_write(
+        posts,
+        base_dir="posts",
+        base_url="/posts",
+        title="Posts",
+        heading="Posts",
+    )
 
     # --- Inyectar chips de tags en cada post ya generado ---
     for p in posts:

@@ -26,9 +26,5 @@ if grep -qE '^portfolio:\s*true\s*$' "$SRC"; then
   python3 scripts/add_project_card.py "$SLUG" "$TITLE" "index.html"
 fi
 
-if [ "$TYPE" != "Page" ]; then
-  echo "  Recordá agregar/actualizar la línea correspondiente en posts/index.html."
-fi
-
 python3 scripts/generate_feed.py
 python3 scripts/generate_tags.py

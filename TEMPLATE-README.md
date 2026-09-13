@@ -1,137 +1,129 @@
-# Cómo usar este sitio como plantilla para el tuyo
+# Using this site as a template for your own
 
-Este repo separa dos cosas:
+[🇪🇸 Leer en español](TEMPLATE-README.es.md)
 
-- **El motor** (`publish.sh`, `scripts/`, `templates/`, `style.css`): la parte
-  reusable, sin ningún dato personal adentro. No hace falta tocarla para
-  arrancar.
-- **Tu contenido** (`site.config`, `content/`, `posts/`, `about/`, imágenes,
-  favicon): todo lo que sí tenés que reemplazar.
+This repo splits two things:
 
-Requiere [Pandoc](https://pandoc.org/installing.html) y Python 3 instalados.
-Nada de Node, nada de frameworks, nada de build steps raros.
+- **The engine** (`publish.sh`, `scripts/`, `templates/`, `style.css`): the reusable part, with no personal data inside it. You don't need to touch it to get started.
+- **Your content** (`site.config`, `content/`, `posts/`, `about/`, images, favicon): everything you do need to replace.
 
-## 1. Tus datos básicos
+## Requirements
 
-Editá `site.config` (un solo archivo, formato `CLAVE="valor"`):
+- [Pandoc](https://pandoc.org/installing.html)
+- Python 3 (standard library only — no `pip install` needed)
+- Git
+
+No Node.js, no frameworks, no weird build steps, no database.
+
+## Getting started
 
 ```bash
-SITE_TITLE="Tu Nombre"
-SITE_ROLE="Tu rol / profesión"
-SITE_URL="https://tu-dominio.com"
-SITE_TAGLINE="Una descripción corta de una línea."
-COPYRIGHT_YEAR="2026"
-DEMO_REEL_EMBED_URL="https://player.vimeo.com/video/TU_VIDEO_ID"
-OG_IMAGE_URL="https://tu-dominio.com/og-image.jpg"
+git clone <this-repo-url> my-site
+cd my-site
+chmod +x publish.sh scripts/*.py
 ```
 
-Esto alimenta el `<title>`, las etiquetas Open Graph (la vista previa que se
-ve al compartir el link), el feed RSS, y el header/footer de **todas** las
-páginas — no hay que tocar HTML en ningún otro lado para esto.
+## 1. Your basic info
 
-## 2. Tu linktree
+Edit `site.config` (a single file, `KEY="value"` format):
 
-Editá `content/links.txt`. Cada entrada es un bloque de `clave: valor`,
-separado del siguiente por una línea con exactamente `---`:
+```bash
+SITE_TITLE="Your Name"
+SITE_ROLE="Your role / profession"
+SITE_URL="https://your-domain.com"
+SITE_TAGLINE="A short, one-line description."
+COPYRIGHT_YEAR="2026"
+DEMO_REEL_EMBED_URL="https://player.vimeo.com/video/YOUR_VIDEO_ID"
+OG_IMAGE_URL="https://your-domain.com/og-image.jpg"
+```
+
+This feeds the `<title>`, the Open Graph tags (the preview shown when the link is shared), the RSS feed, and the header/footer of **every** page — no HTML to touch anywhere else for this.
+
+## 2. Your linktree
+
+Edit `content/links.txt`. Each entry is a `key: value` block, separated from the next by a line with exactly `---`:
 
 ```
 title: Instagram
-desc: Mi arte y proceso
-url: https://instagram.com/tu-usuario
+desc: My art and process
+url: https://instagram.com/your-username
 footer: true
 ```
 
-- `footer: true` es opcional — decide si ese link también aparece en el pie
-  de página de todo el sitio (no solo en `/links/`).
-- Para agregar un separador visual entre grupos de links:
+- `footer: true` is optional — decides whether that link also shows up in the site-wide footer (not just on `/links/`).
+- To add a visual separator between groups of links:
   ```
   separator: true
   ```
-- Los links internos (que empiezan con `/`) no llevan `target="_blank"`
-  automáticamente; los externos (`http://`/`https://`) sí.
+- Internal links (starting with `/`) don't get `target="_blank"` automatically; external ones (`http://`/`https://`) do.
 
-## 3. Tu portfolio (la home)
+## 3. Your portfolio (the homepage)
 
-`content/portfolio.txt` es una lista de slugs, uno por línea, en el orden en
-que querés que aparezcan como miniaturas en la home:
+`content/portfolio.txt` is a list of slugs, one per line, in the order you want them to appear as thumbnails on the homepage:
 
 ```
-mi-primer-proyecto
-otro-proyecto
+my-first-project
+another-project
 ```
 
-Cada slug tiene que tener un post correspondiente en
-`posts/<slug>/<slug>.md` con `portfolio: true` en su front matter (ver
-punto 5). El título y la miniatura (`media/img/thumb.webp`) se toman de ahí
-automáticamente.
+Each slug needs a matching post at `posts/<slug>/<slug>.md` with `portfolio: true` in its front matter (see section 5). The title and thumbnail (`media/img/thumb.webp`) are picked up from there automatically.
 
-## 4. Tu "About" y tu contenido existente
+## 4. Your "About" page and existing content
 
-- Reemplazá `about/about.md` por tu propio texto (Markdown normal).
-- Borrá el contenido de `posts/` (son ejemplos de otra persona) y empezá el
-  tuyo — ver el punto 5 para el formato.
-- Reemplazá `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
-  `apple-touch-icon.png`, y `og-image.jpg` por los tuyos (mismos nombres de
-  archivo, mismas dimensiones).
+- Replace `about/about.md` with your own text (plain Markdown).
+- Clear out `posts/` (they're someone else's examples) and start your own — see section 5 for the format.
+- Replace `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, and `og-image.jpg` with your own (same file names, same dimensions).
 
-## 5. Publicar contenido nuevo
+## 5. Publishing new content
 
-Cada post/proyecto vive en su propia carpeta: `posts/mi-post/mi-post.md`,
-con un front matter mínimo:
+Each post/project lives in its own folder: `posts/my-post/my-post.md`, with minimal front matter:
 
 ```markdown
 ---
-title: Mi Post
+title: My Post
 type: Article
 ---
 
-Contenido en Markdown normal.
+Content in plain Markdown.
 ```
 
-- `type` es una etiqueta libre (`Article`, `Project`, lo que quieras) — se
-  muestra tal cual en la página del post y en el listado de `/posts/`.
-- `type: Page` es especial: usa una plantilla sin fecha, sin "related
-  posts", pensada para páginas únicas como el About.
-- `portfolio: true` (opcional): si lo agregás, el post entra a la home
-  automáticamente la próxima vez que lo publiques (y a `content/portfolio.txt`,
-  al final — reordená el archivo a mano si querés otra posición).
-- `date: YYYY-MM-DD` (opcional): sin fecha, el post no aparece en ningún
-  feed RSS (para no romper el orden cronológico con fechas inventadas), pero
-  sigue apareciendo en `/posts/` igual.
-- `tags:` (opcional): lista de etiquetas. Prefijalas con `topic/` o
-  `subtopic/` — solo los `topic/` generan su propio feed RSS
-  (`/tags/nombre/feed.xml`); los `subtopic/` son solo para navegar/filtrar.
+- `type` is a free-form label (`Article`, `Project`, whatever you want) — shown as-is on the post page and in the `/posts/` listing.
+- `type: Page` is special: uses a template with no date and no "related posts", meant for one-off pages like About.
+- `portfolio: true` (optional): adds the post to the homepage automatically the next time you publish it (and to `content/portfolio.txt`, at the end — reorder the file by hand if you want a different position).
+- `date: YYYY-MM-DD` (optional): without a date, the post is excluded from RSS feeds (to avoid breaking chronological order with a guessed date), but still shows up in `/posts/`.
+- `tags:` (optional): a list of tags. Prefix them with `topic/` or `subtopic/` — only `topic/` tags get their own RSS feed (`/tags/name/feed.xml`); `subtopic/` tags are for browsing/filtering only.
 
-Publicás con:
+Publish with:
 ```bash
-./publish.sh posts/mi-post/mi-post.md
+./publish.sh posts/my-post/my-post.md
 ```
 
-Esto genera el HTML del post, y **regenera automáticamente** todo lo
-derivado: `feed.xml`, las páginas de etiquetas, `posts/index.html`
-(paginado de a 25), `index.html` (home), `links/index.html`, y `404.html`.
-Nunca edites estos archivos generados a mano — se pisan solos en la próxima
-publicación.
+This generates the post's HTML, and **automatically regenerates** everything derived from it: `feed.xml`, tag pages, `posts/index.html` (paginated at 25 per page), `index.html` (homepage), `links/index.html`, and `404.html`. Never edit these generated files by hand — they get overwritten on the next publish.
 
-## Estructura de imágenes/video por post
+## Image/video structure per post
 
-Convención (no obligatoria, pero es la que usan los ejemplos):
+Convention (not enforced, but what the examples use):
 ```
-posts/mi-proyecto/
-├── mi-proyecto.md
+posts/my-project/
+├── my-project.md
 └── media/
     ├── img/
-    │   ├── thumb.webp        ← usada en la home
+    │   ├── thumb.webp        ← used on the homepage
     │   ├── 01.webp
     │   └── full/
-    │       └── 01.jpg         ← versión sin comprimir, opcional
+    │       └── 01.jpg         ← uncompressed version, optional
     └── vid/
         └── clip.mp4
 ```
 
-## Qué NO tocar
+## What NOT to touch
 
-`templates/_header.html` y `templates/_footer.html` son generados por
-`scripts/generate_chrome.py` en cada `publish.sh` — no los edites, se
-pisan solos. Si querés cambiar el diseño del header/footer, editá
-`scripts/generate_chrome.py`.
+`templates/_header.html` and `templates/_footer.html` are generated by `scripts/generate_chrome.py` on every `publish.sh` run — don't edit them, they get overwritten. To change the header/footer design, edit `scripts/generate_chrome.py` instead.
+
+## Deploying
+
+The site is plain static HTML/CSS/XML — it works on GitHub Pages, GitLab Pages, Netlify, or any static host. For GitLab Pages specifically, you'll need a `.gitlab-ci.yml` that copies everything except the engine's source files into a `public/` folder; ask in an issue if you'd like a starting point.
+
+## License
+
+The engine (`publish.sh`, `scripts/`, `templates/`, `style.css`) is free to reuse and adapt. Please don't reuse the example content under `posts/`, `about/`, and `content/` in this repo — that's personal to the original author.

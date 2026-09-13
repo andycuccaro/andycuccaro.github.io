@@ -32,6 +32,7 @@ Can you spot every Easter Egg?
 </div>
 ```
 
+<!--
 ## Behind the Scenes
 
 ```{=html}
@@ -44,3 +45,4 @@ Can you spot every Easter Egg?
   <li><a href="/posts/suzy/postpro/"><span>Post-Production</span></a></li>
 </ul>
 ```
+-->

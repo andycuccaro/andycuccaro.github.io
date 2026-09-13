@@ -1,52 +1,37 @@
 #!/usr/bin/env python3
 """
-Inserta o actualiza la miniatura de un proyecto en index.html (portfolio-grid).
-Uso: add_project_card.py <slug> <title> <index_html_path>
+Asegura que un slug esté presente en content/portfolio.txt (lo agrega al
+final si falta). La regeneración real de index.html la hace generate_home.py,
+llamado después de este script en publish.sh.
+
+Uso: add_project_card.py <slug>
 """
-import re
 import sys
 
+
 def main():
-    if len(sys.argv) != 4:
-        print("Uso: add_project_card.py <slug> <title> <index_html_path>", file=sys.stderr)
+    if len(sys.argv) != 2:
+        print("Uso: add_project_card.py <slug>", file=sys.stderr)
         sys.exit(1)
 
-    slug, title, index_path = sys.argv[1], sys.argv[2], sys.argv[3]
+    slug = sys.argv[1]
+    path = "content/portfolio.txt"
 
-    with open(index_path, "r", encoding="utf-8") as f:
-        content = f.read()
+    try:
+        with open(path, encoding="utf-8") as f:
+            slugs = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        slugs = []
 
-    card = (
-        f'    <a class="project-card" href="/posts/{slug}/">\n'
-        f'      <img src="/posts/{slug}/media/img/thumb.webp" alt="{title} thumbnail" loading="lazy">\n'
-        f'      <span>{title}</span>\n'
-        f'    </a>'
-    )
+    if slug in slugs:
+        print(f"  '{slug}' ya está en {path}")
+        return
 
-    # Buscar si ya existe una card para este slug (por su href)
-    existing_pattern = re.compile(
-        r'    <a class="project-card" href="/posts/' + re.escape(slug) + r'/">.*?</a>',
-        re.DOTALL
-    )
+    slugs.append(slug)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(slugs) + "\n")
+    print(f"✔ '{slug}' agregado a {path} (al final — reordená el archivo a mano si querés otra posición)")
 
-    if existing_pattern.search(content):
-        content = existing_pattern.sub(card, content)
-        print(f"✔ Miniatura de '{slug}' actualizada en {index_path}")
-    else:
-        grid_open = '<div class="portfolio-grid">'
-        idx = content.find(grid_open)
-        if idx == -1:
-            print(f"Error: no encontré '{grid_open}' en {index_path}", file=sys.stderr)
-            sys.exit(1)
-        close_idx = content.find("</div>", idx)
-        if close_idx == -1:
-            print(f"Error: no encontré el cierre de portfolio-grid en {index_path}", file=sys.stderr)
-            sys.exit(1)
-        content = content[:close_idx] + card + "\n\n  " + content[close_idx:]
-        print(f"✔ Miniatura de '{slug}' agregada a {index_path}")
-
-    with open(index_path, "w", encoding="utf-8") as f:
-        f.write(content)
 
 if __name__ == "__main__":
     main()

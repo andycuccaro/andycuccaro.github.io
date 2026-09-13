@@ -14,33 +14,13 @@ import os
 import re
 from datetime import datetime
 
+from generate_chrome import HEADER, FOOTER
+from records import parse_front_matter, parse_kv_block
 from rss_utils import SITE_URL, build_rss
+from site_config import CONFIG
 
-SITE_TITLE = "Andy Cuccaro"
+SITE_TITLE = CONFIG["SITE_TITLE"]
 PAGE_SIZE = 25
-
-HEADER = '''<header>
-  <h1><a href="/">Andy Cuccaro</a></h1>
-  <p class="role">2D &amp; 3D Artist</p>
-  <nav>
-    <a href="/">Portfolio</a>
-    <a href="/posts/">Posts</a>
-    <a href="/about/">About</a>
-    <a href="/links/">Links</a>
-  </nav>
-</header>'''
-
-FOOTER = '''<footer>
-  <p>© 2026 Andy Cuccaro</p>
-  <div class="footer-links">
-    <a href="https://www.artstation.com/andycuccaro" target="_blank" rel="noopener noreferrer">ArtStation</a>
-    <a href="https://instagram.com/andycuccaro" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://x.com/andycuccaro" target="_blank" rel="noopener noreferrer">X</a>
-    <a href="https://youtube.com/andycuccaro" target="_blank" rel="noopener noreferrer">YouTube</a>
-    <a href="https://linkedin.com/in/andycuccaro" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="mailto:&#97;&#110;&#100;&#121;&#99;&#117;&#99;&#99;&#97;&#114;&#111;&#64;&#112;&#109;&#46;&#109;&#101;">Email</a>
-  </div>
-</footer>'''
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="en">
@@ -48,7 +28,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — Andy Cuccaro</title>
+<title>{title} — {sitetitle}</title>
 {feed_link}<link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -69,36 +49,6 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 </body>
 </html>
 '''
-
-
-def parse_front_matter(path):
-    """Parser liviano para nuestro front matter (sin dependencias externas)."""
-    with open(path, encoding="utf-8") as f:
-        content = f.read()
-    match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
-    if not match:
-        return None
-    meta = {}
-    lines = match.group(1).split("\n")
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if ":" in line and not line.strip().startswith("-"):
-            key, _, value = line.partition(":")
-            key, value = key.strip(), value.strip()
-            if value == "":
-                items = []
-                j = i + 1
-                while j < len(lines) and lines[j].strip().startswith("-"):
-                    items.append(lines[j].strip()[1:].strip())
-                    j += 1
-                if items:
-                    meta[key] = items
-                    i = j
-                    continue
-            meta[key] = value
-        i += 1
-    return meta
 
 
 def card_list_html(posts):
@@ -172,6 +122,7 @@ def paginate_and_write(items, base_dir, base_url, title, heading, feed_link=""):
 
         html = PAGE_TEMPLATE.format(
             title=title if page_num == 1 else f"{title} — Page {page_num}",
+            sitetitle=SITE_TITLE,
             feed_link=feed_link if page_num == 1 else "",
             header=HEADER,
             heading=heading,
@@ -226,7 +177,7 @@ def main():
         is_topic = tag_kind.get(tag) == "topic"
 
         if is_topic:
-            feed_link = f'<link rel="alternate" type="application/rss+xml" title="Andy Cuccaro — #{tag}" href="/tags/{tag}/feed.xml">\n'
+            feed_link = f'<link rel="alternate" type="application/rss+xml" title="{SITE_TITLE} — #{tag}" href="/tags/{tag}/feed.xml">\n'
         else:
             feed_link = ""
 
@@ -287,6 +238,7 @@ def main():
 
     html = PAGE_TEMPLATE.format(
         title="Tags",
+        sitetitle=SITE_TITLE,
         feed_link="",
         header=HEADER,
         heading="Tags",

@@ -5,26 +5,13 @@ Genera feed.xml a partir de todos los posts/*/*.md de primer nivel
 Se llama automáticamente desde publish.sh en cada publicación.
 """
 import glob
-import re
 from datetime import datetime
 
+from records import parse_front_matter
 from rss_utils import SITE_URL, SITE_TITLE, build_rss
+from site_config import CONFIG
 
-SITE_DESCRIPTION = "2D & 3D Artist based in Buenos Aires — portfolio, articles and posts."
-
-
-def parse_front_matter(path):
-    with open(path, encoding="utf-8") as f:
-        content = f.read()
-    match = re.match(r"^---\n(.*?)\n---\n", content, re.DOTALL)
-    if not match:
-        return None
-    meta = {}
-    for line in match.group(1).split("\n"):
-        if ":" in line:
-            key, _, value = line.partition(":")
-            meta[key.strip()] = value.strip()
-    return meta
+SITE_DESCRIPTION = CONFIG["SITE_TAGLINE"]
 
 
 def main():

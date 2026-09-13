@@ -1,0 +1,39 @@
+title: ArtStation
+desc: Professional 3D portfolio
+url: https://www.artstation.com/andycuccaro
+footer: true
+---
+title: Instagram
+desc: Artwork, tutorials & behind the scenes
+url: https://instagram.com/andycuccaro
+footer: true
+---
+title: Twitter/X
+desc: 3D tips, WIPs & conversations
+url: https://x.com/andycuccaro
+footer: true
+---
+title: YouTube
+desc: Tutorials, reels & animation
+url: https://youtube.com/andycuccaro
+footer: true
+---
+title: LinkedIn
+desc: Let's connect professionally
+url: https://linkedin.com/in/andycuccaro
+footer: true
+---
+title: Gumroad
+desc: Digital products & resources
+url: https://andycuccaro.gumroad.com/
+---
+title: Email
+desc: Get in touch
+url: mailto:&#97;&#110;&#100;&#121;&#99;&#117;&#99;&#99;&#97;&#114;&#111;&#64;&#112;&#109;&#46;&#109;&#101;
+footer: true
+---
+separator: true
+---
+title: Suzy (with a Z)
+desc: My short film
+url: /posts/suzy/

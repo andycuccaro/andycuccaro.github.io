@@ -5,8 +5,10 @@ Usado por generate_feed.py (feed general) y generate_tags.py (feeds por etiqueta
 from email.utils import format_datetime, formatdate
 from xml.sax.saxutils import escape
 
-SITE_URL = "https://andycuccaro.info"
-SITE_TITLE = "Andy Cuccaro"
+from site_config import CONFIG
+
+SITE_URL = CONFIG["SITE_URL"]
+SITE_TITLE = CONFIG["SITE_TITLE"]
 
 
 def build_rss(items, feed_title, feed_description, feed_self_url):

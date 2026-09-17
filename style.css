@@ -1,24 +1,58 @@
 :root {
   color-scheme: light dark;
 
-  /* Color de acento — el mismo primary que usa Lumen de fábrica (#158cba).
-     Para probar otro, reemplazá los dos valores hex de abajo (el segundo
-     es el tono de hover, más oscuro que el primero):
-       #158cba / #0f6d92  (celeste-cyan, el original de Lumen)
-       #2c6e49 / #1f4e34  (verde bosque)
-       #b5442a / #8f351f  (terracota)
-     Si cambiás esto, revisá también la versión de modo oscuro más abajo
-     (ahí conviene un tono más CLARO, no más oscuro). */
-  --accent: #158cba;
-  --accent-hover: #0f6d92;
+  /* ============================================================
+     TOKENS DE DISEÑO — todo el "tema" del sitio vive acá arriba.
+     Para cambiar el aspecto, modificá estos valores; no hace falta
+     tocar nada más en el resto del archivo.
+     ============================================================ */
 
-  /* El "truco Lumen": en vez de sombra difusa, un borde fino en 3 lados y
-     uno más grueso abajo — simula profundidad sin blur. En hover, el borde
-     inferior se achica 1px (efecto "hundimiento", como un botón real). */
-  --border-color: #dbdbdb;
-  --thickness: 4px;
+  /* Acento: color de marca (badge RSS, links del paginador).
+     Para probar otro color, reemplazá los dos hex de abajo
+     (el segundo es el tono de hover, más oscuro que el primero):
+       #158cba / #0f6d92  (celeste-cyan)
+       #2c6e49 / #1f4e34  (verde bosque)
+       #b5442a / #8f351f  (terracota) */
+  --color-accent:       #158cba;
+  --color-accent-hover: #0f6d92;
+
+  /* Fondos */
+  --color-bg:           #fff;      /* fondo de página */
+  --color-surface:      #f2f2f2;   /* header, footer, cards */
+  --color-surface-alt:  #eee;      /* tag-pills en reposo */
+  --color-surface-hover:#ddd;      /* tag-pills al hacer hover */
+  --color-surface-input:#e2e2e2;   /* placeholders, img-placeholder */
+
+  /* Texto */
+  --color-text:         #333;      /* texto principal */
+  --color-text-on-surface: #111;   /* texto dentro de cards/links */
+  --color-text-muted:   #555;      /* roles, meta, footer, error-msg */
+  --color-text-subtle:  #666;      /* dates, link-desc, img-placeholder */
+  --color-text-faint:   #bbb;      /* paginator-disabled */
+  --color-text-inverse: #fff;      /* texto sobre fondo oscuro/acento */
+
+  /* Bordes */
+  --color-border:       #dbdbdb;   /* bordes generales */
+  --color-border-muted: #ddd;      /* h2, link-separator, paginator */
+
+  /* Bevel (efecto Adwaita/elementary) — EN UNA SOLA PROPIEDAD box-shadow
+     por elemento, para poder probar con/sin bevel en DevTools destildando
+     una sola casilla. */
+  --color-bevel-hi:     rgba(255, 255, 255, 0.8);  /* highlight arriba */
+  --color-bevel-sh:     rgba(0, 0, 0, 0.2);        /* sombra abajo */
+
+  /* Overlay de hover sobre las project-cards */
+  --color-card-overlay: rgba(17, 17, 17, 0.75);
+
+  /* Geometría */
+  --radius:    0.4rem;   /* radio estándar (la mayoría de elementos) */
+  --radius-sm: 0.3rem;   /* radio para elementos pequeños (paginator-current, footer a) */
+
+  /* Sistema Lumen (borde grueso abajo) — usado si se prefiere a bevel */
+  --thickness:       4px;
   --thickness-hover: 4px;
 }
+
 
 * {
   box-sizing: border-box;
@@ -28,8 +62,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.4;
   margin: 0;
-  color: #333;
-  background: #fff;
+  color: var(--color-text);
+  background: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -60,20 +94,20 @@ h1 a:visited {
 
 .role {
   font-size: 1.1rem;
-  color: #444;
+  color: var(--color-text-muted);
   margin: 0 0 0.5rem;
 }
 
 .meta {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--color-text-muted);
   margin: 0 0 1.5rem;
 }
 
 header {
   text-align: center;
-  background: #f2f2f2;
-  border-bottom: var(--thickness) solid var(--border-color);
+  background: var(--color-surface);
+  border-bottom: var(--thickness) solid var(--color-border);
   padding: 1.75rem 1.25rem 1.5rem;
 }
 
@@ -84,8 +118,8 @@ header h1 {
 }
 
 footer {
-  background: #f2f2f2;
-  border-top: var(--thickness) solid var(--border-color);
+  background: var(--color-surface);
+  border-top: var(--thickness) solid var(--color-border);
   padding: 1.25rem 1.25rem;
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +127,7 @@ footer {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.85rem;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 footer .footer-links {
@@ -103,12 +137,12 @@ footer .footer-links {
 }
 
 footer a {
-  color: #555;
+  color: var(--color-text-muted);
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #111;
+  color: var(--color-text-on-surface);
   text-decoration: underline;
 }
 
@@ -122,9 +156,9 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: var(--color-text);
   padding: 0.5rem 0.7rem 0.3rem 0.7rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   transition: background-color 0.15s ease;
 }
 
@@ -159,11 +193,11 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: #333;
-  border-radius: 0.4rem;
+  color: var(--color-text);
+  border-radius: var(--radius);
   overflow: hidden;
-  background: #f2f2f2;
-  border: 1px solid var(--border-color);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-bottom-width: var(--thickness);
   transition: border-bottom-width 0.15s ease;
 }
@@ -177,14 +211,14 @@ nav a:hover {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  border-radius: 0.35rem 0.35rem 0 0;
+  border-radius: calc(var(--radius) - 0.05rem) calc(var(--radius) - 0.05rem) 0 0;
 }
 
 .project-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: #111c;
+  background: var(--color-card-overlay);
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 1;
@@ -205,12 +239,12 @@ nav a:hover {
 }
 
 .project-card:hover span {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 video {
   width: 100%;
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   display: block;
   margin-top: 1rem;
 }
@@ -224,7 +258,7 @@ video {
 
 .project-images img {
   width: 100%;
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   display: block;
 }
 
@@ -234,17 +268,17 @@ video {
 
 .img-placeholder {
   aspect-ratio: 16 / 10;
-  background: #e2e2e2;
+  background: var(--color-surface-input);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
-  border-radius: 0.4rem;
+  color: var(--color-text-subtle);
+  border-radius: var(--radius);
 }
 
 h2 {
   font-size: 1.1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border-muted);
   padding-bottom: 0.25rem;
   margin-top: 2rem;
 }
@@ -256,7 +290,7 @@ h3 {
 
 .dates {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-text-subtle);
   margin: 0 0 0.35rem;
 }
 
@@ -272,15 +306,15 @@ h3 {
   font-size: 0.8rem;
   font-weight: 400;
   text-decoration: none;
-  color: #555;
-  background: #eee;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
   padding: 0.3rem 0.7rem;
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   transition: background-color 0.15s ease;
 }
 
 .tag-pill:hover {
-  background: #ddd;
+  background: var(--color-surface-hover);
 }
 
 .tag-group {
@@ -288,7 +322,7 @@ h3 {
 }
 
 .tag-pill.is-topic {
-  border-radius: 0.4rem 0 0 0.4rem;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 
 .tag-rss {
@@ -297,10 +331,10 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-decoration: none;
-  color: #fff;
-  background: var(--accent);
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
   padding: 0.3rem 0.7rem;
-  border-radius: 0 0.4rem 0.4rem 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
   align-self: stretch;
   display: flex;
   align-items: center;
@@ -308,7 +342,7 @@ h3 {
 }
 
 .tag-rss:hover {
-  background: var(--accent-hover);
+  background: var(--color-accent-hover);
 }
 
 #related-posts h2 {
@@ -324,12 +358,12 @@ h3 {
   gap: 0.75rem;
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9rem;
 }
 
 .paginator a {
-  color: var(--accent);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -338,7 +372,7 @@ h3 {
 }
 
 .paginator-disabled {
-  color: #bbb;
+  color: var(--color-text-faint);
 }
 
 .paginator-pages {
@@ -355,7 +389,7 @@ article {
 }
 
 a {
-  color: #333;
+  color: var(--color-text);
 }
 
 /* links.html */
@@ -376,12 +410,12 @@ a {
   flex-direction: column;
   gap: 0.15rem;
   padding: 0.75rem 1rem 0.5rem;
-  border-radius: 0.4rem;
-  background: #f2f2f2;
+  border-radius: var(--radius);
+  background: var(--color-surface);
   text-decoration: none;
-  color: #111;
+  color: var(--color-text-on-surface);
   font-weight: 600;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--color-border);
   border-bottom-width: var(--thickness);
   transition: border-bottom-width 0.15s ease;
 }
@@ -393,7 +427,7 @@ a {
 .card-list .dates {
   font-weight: 400;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-text-subtle);
 }
 
 .link-list {
@@ -411,11 +445,11 @@ a {
   flex-direction: column;
   gap: 0.15rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--color-border);
   border-bottom-width: var(--thickness);
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   text-decoration: none;
-  color: #111;
+  color: var(--color-text-on-surface);
   transition: border-bottom-width 0.15s ease, background-color 0.15s ease;
 }
 
@@ -426,18 +460,18 @@ a {
 .link-desc {
   font-weight: 300;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-text-subtle);
 }
 
 .link-separator {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--color-border-muted);
   margin: 1rem 0;
 }
 
 .link-list a:hover {
   border-bottom-width: var(--thickness-hover);
-  background-color: #f2f2f2;
+  background-color: var(--color-surface);
 }
 
 .back {
@@ -460,55 +494,49 @@ a {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: #ddd;
+  color: var(--color-text-inverse);
   margin: 0;
 }
 
 .error-msg {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--color-text-muted);
   margin: 0 0 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Mismo principio que en modo claro, pero más CLARO para que se lea
-       bien sobre fondo oscuro (al revés que en modo claro: acá el hover
-       se aclara, no se oscurece). */
-    --accent: #4db8e0;
-    --accent-hover: #7cc9e8;
-    --border-color: #333;
+    /* En modo oscuro se redefinen todos los tokens que cambian de valor.
+       Los que no aparecen acá conservan su valor de modo claro. */
+
+    /* Fondos oscuros */
+    --color-bg:           #111;
+    --color-surface:      #191919;
+    --color-surface-alt:  #262626;
+    --color-surface-hover:#333;
+    --color-surface-input:#2a2a2a;
+
+    /* Texto para modo oscuro */
+    --color-text:         #eee;
+    --color-text-on-surface: #111;
+    --color-text-muted:   #999;
+    --color-text-subtle:  #999;
+    --color-text-faint:   #555;
+
+    /* Bordes */
+    --color-border:       #333;
+    --color-border-muted: #333;
+
+    /* Bevel más sutil sobre fondo oscuro */
+    --color-bevel-hi:     rgba(255, 255, 255, 0.08);
+    --color-bevel-sh:     rgba(0, 0, 0, 0.5);
+
+    /* Acento más claro para que se lea bien sobre fondo oscuro */
+    --color-accent:       #4db8e0;
+    --color-accent-hover: #7cc9e8;
   }
-  body {
-    color: #eee;
-    background: #111;
-  }
-  .role { color: #bbb; }
-  .meta { color: #999; }
-  h2 { border-color: #333; }
-  .dates { color: #999; }
-  a { color: #eee; }
-  /* a:visited { color: #eee; } */
-  .link-list a { color: #eee; }
-  .link-desc { color: #999; }
-  .link-list a:hover { background-color: #1e1e1e; }
-  .link-separator { border-top-color: #333; }
-  .card-list a { background: #1e1e1e; color: #eee; }
-  .card-list a:hover { background: #262626; }
-  .card-list .dates { color: #999; }
-  nav a { color: #ddd; }
   nav a:hover { background-color: rgba(255, 255, 255, 0.1); }
-  .project-card { background: #191919; color: #ddd; }
-  .project-card::after { background: #f5f5f5db; }
-  .project-card:hover span { color: #111; }
-  .img-placeholder { background: #2a2a2a; color: #aaa; }
-  header { background: #191919; }
-  .tag-pill { background: #262626; color: #bbb; }
-  .paginator-disabled { color: #555; }
-  .tag-pill:hover { background: #333; }
-  .error-code { color: #333; }
-  .error-msg { color: #999; }
-  footer { background: #191919; color: #999; }
-  footer a { color: #999; }
-  footer a:hover { color: #eee; }
+  .project-card { background: var(--color-surface); color: var(--color-text-inverse); }
+  .project-card::after { background: rgba(245,245,245,0.87); }
+  .project-card:hover span { color: var(--color-text-on-surface); }
 }

@@ -51,6 +51,7 @@
   /* Sistema Lumen (borde grueso abajo) — usado si se prefiere a bevel */
   --thickness:       4px;
   --thickness-hover: 4px;
+  --radius-tab: 0.4rem 0.4rem 0 0;
 }
 
 
@@ -108,13 +109,14 @@ header {
   text-align: center;
   background: var(--color-surface);
   border-bottom: var(--thickness) solid var(--color-border);
-  padding: 1.75rem 1.25rem 1.5rem;
+  /*! padding: 1.75rem 1.25rem 1.5rem; */
 }
 
 header h1 {
   font-family: Futura, "Century Gothic", "Trebuchet MS", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  padding: 1.25rem 0 0.5rem 0;
 }
 
 footer {
@@ -157,8 +159,8 @@ nav {
 nav a {
   text-decoration: none;
   color: var(--color-text);
-  padding: 0.5rem 0.7rem 0.3rem 0.7rem;
-  border-radius: var(--radius);
+  padding: 0.7rem 1rem 0.5rem 1rem;
+  border-radius: var(--radius-tab);
   transition: background-color 0.15s ease;
 }
 

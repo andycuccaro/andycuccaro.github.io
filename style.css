@@ -520,7 +520,7 @@ a {
 
     /* Texto para modo oscuro */
     --color-text:         #eee;
-    --color-text-on-surface: #111;
+    --color-text-on-surface: #ddd;
     --color-text-muted:   #999;
     --color-text-subtle:  #999;
     --color-text-faint:   #555;

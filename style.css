@@ -17,23 +17,23 @@
   --color-accent-hover: #0f6d92;
 
   /* Fondos */
-  --color-bg:           #fff;      /* fondo de página */
-  --color-surface:      #f2f2f2;   /* header, footer, cards */
-  --color-surface-alt:  #eee;      /* tag-pills en reposo */
-  --color-surface-hover:#ddd;      /* tag-pills al hacer hover */
-  --color-surface-input:#e2e2e2;   /* placeholders, img-placeholder */
+  --color-bg:           #fafafa;      /* fondo de página */
+  --color-surface:      hsl(0, 0%, 95%);   /* header, footer, cards */
+  --color-surface-alt:  hsl(0, 0%, 94%);      /* tag-pills en reposo */
+  --color-surface-hover:hsl(0, 0%, 90%);      /* tag-pills al hacer hover */
+  --color-surface-input:hsl(0, 0%, 90%);   /* placeholders, img-placeholder */
 
   /* Texto */
   --color-text:         #333;      /* texto principal */
-  --color-text-on-surface: #111;   /* texto dentro de cards/links */
-  --color-text-muted:   #555;      /* roles, meta, footer, error-msg */
+  --color-text-on-surface: hsl(0, 0%, 7%);   /* texto dentro de cards/links */
+  --color-text-muted:   hsl(0, 0%, 30%);      /* roles, meta, footer, error-msg */
   --color-text-subtle:  #666;      /* dates, link-desc, img-placeholder */
-  --color-text-faint:   #bbb;      /* paginator-disabled */
+  --color-text-faint:   hsl(0, 0%, 75%);      /* paginator-disabled */
   --color-text-inverse: #fff;      /* texto sobre fondo oscuro/acento */
 
   /* Bordes */
-  --color-border:       #dbdbdb;   /* bordes generales */
-  --color-border-muted: #ddd;      /* h2, link-separator, paginator */
+  --color-border:       hsl(0, 0%, 82%);   /* bordes generales */
+  --color-border-muted: hsl(0, 0%, 86%);      /* h2, link-separator, paginator */
 
   /* Bevel (efecto Adwaita/elementary) — EN UNA SOLA PROPIEDAD box-shadow
      por elemento, para poder probar con/sin bevel en DevTools destildando
@@ -165,7 +165,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: var(--color-border);
 }
 
 .video-wrapper {
@@ -424,6 +424,7 @@ a {
 
 .card-list a:hover {
   border-bottom-width: var(--thickness-hover);
+  background: var(--color-surface-hover);
 }
 
 .card-list .dates {
@@ -453,6 +454,7 @@ a {
   text-decoration: none;
   color: var(--color-text-on-surface);
   transition: border-bottom-width 0.15s ease, background-color 0.15s ease;
+  background: var(--color-surface);
 }
 
 .link-title {
@@ -460,7 +462,7 @@ a {
 }
 
 .link-desc {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.85rem;
   color: var(--color-text-subtle);
 }
@@ -473,7 +475,7 @@ a {
 
 .link-list a:hover {
   border-bottom-width: var(--thickness-hover);
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-hover);
 }
 
 .back {
@@ -512,33 +514,32 @@ a {
        Los que no aparecen acá conservan su valor de modo claro. */
 
     /* Fondos oscuros */
-    --color-bg:           #111;
-    --color-surface:      #191919;
-    --color-surface-alt:  #262626;
-    --color-surface-hover:#333;
-    --color-surface-input:#2a2a2a;
+    --color-bg:           hsl(0, 0%, 7%);
+    --color-surface:      hsl(0, 0%, 10%);
+    --color-surface-alt:  hsl(0, 0%, 14%);
+    --color-surface-hover:hsl(0, 0%, 15%);
+    --color-surface-input:hsl(0, 0%, 16%);
 
     /* Texto para modo oscuro */
-    --color-text:         #eee;
-    --color-text-on-surface: #ddd;
-    --color-text-muted:   #999;
-    --color-text-subtle:  #999;
-    --color-text-faint:   #555;
+    --color-text:         hsl(0, 0%, 94%);
+    --color-text-on-surface: hsl(0, 0%, 88%);
+    --color-text-muted:   hsl(0, 0%, 40%);
+    --color-text-subtle:  hsl(0, 0%, 60%);
+    --color-text-faint:   hsl(0, 0%, 30%);
+    --color-text-inverse: #333;      /* texto sobre fondo oscuro/acento */
 
     /* Bordes */
-    --color-border:       #333;
-    --color-border-muted: #333;
+    --color-border:       hsl(0, 0%, 20%);
+    --color-border-muted: hsl(0, 0%, 25%);
 
     /* Bevel más sutil sobre fondo oscuro */
     --color-bevel-hi:     rgba(255, 255, 255, 0.08);
     --color-bevel-sh:     rgba(0, 0, 0, 0.5);
+    /* Overlay de hover sobre las project-cards */
+    --color-card-overlay: rgba(245,245,245,0.87);
 
     /* Acento más claro para que se lea bien sobre fondo oscuro */
     --color-accent:       #4db8e0;
     --color-accent-hover: #7cc9e8;
   }
-  nav a:hover { background-color: rgba(255, 255, 255, 0.1); }
-  .project-card { background: var(--color-surface); color: var(--color-text-inverse); }
-  .project-card::after { background: rgba(245,245,245,0.87); }
-  .project-card:hover span { color: var(--color-text-on-surface); }
 }
